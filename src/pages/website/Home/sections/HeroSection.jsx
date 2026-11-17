@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useLayoutEffect, useRef } from "react";
 import gsap from "gsap";
 import { ArrowLeft } from "lucide-react";
 
@@ -9,7 +9,7 @@ import TeacherPortrait from "../../../../components/website/TeacherPortrait";
 export default function HeroSection() {
   const sectionRef = useRef(null);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     const section = sectionRef.current;
 
     if (!section) return;
