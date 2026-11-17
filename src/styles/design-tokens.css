@@ -1,0 +1,41 @@
+:root {
+  --color-primary: #183c3a;
+  --color-primary-deep: #102d2b;
+  --color-gold: #c69a5a;
+  --color-ivory: #f7f3ec;
+  --color-surface: #fffdf9;
+  --color-text: #202020;
+  --color-muted: #77736d;
+  --color-border: #e8dfd2;
+
+  /* المتغيرات الإضافية المطلوبة لتشغيل التصميم بكفاءة */
+  --radius: 0.5rem;
+  --background: var(--color-ivory);
+  --foreground: var(--color-text);
+  --card: var(--color-surface);
+  --card-foreground: var(--color-text);
+  --popover: var(--color-surface);
+  --popover-foreground: var(--color-text);
+  --primary: var(--color-primary);
+  --primary-foreground: var(--color-surface);
+  --secondary: #efe7da;
+  --secondary-foreground: var(--color-primary);
+  --muted: #efe7da;
+  --muted-foreground: var(--color-muted);
+  --accent: var(--color-gold);
+  --accent-foreground: var(--color-primary-deep);
+  --destructive: oklch(0.577 0.245 27.325);
+  --destructive-foreground: oklch(0.984 0.003 247.858);
+  --border: var(--color-border);
+  --input: var(--color-border);
+  --ring: var(--color-gold);
+  --deep: var(--color-primary-deep);
+  --gold: var(--color-gold);
+  --sand: #ece2d2;
+
+  --font-arabic:
+    "IBM Plex Sans Arabic", "Alexandria", Tahoma, Arial, sans-serif;
+  --radius-control: 0.5rem;
+  --radius-card: 0.875rem;
+  --container-width: 72rem;
+}

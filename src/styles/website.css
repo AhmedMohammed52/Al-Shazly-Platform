@@ -1,0 +1,657 @@
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --font-sans: "IBM Plex Sans Arabic", system-ui, sans-serif;
+  --font-display: "Alexandria", "IBM Plex Sans Arabic", sans-serif;
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-deep: var(--deep);
+  --color-gold: var(--gold);
+  --color-sand: var(--sand);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+  html {
+    scroll-behavior: smooth;
+    overflow-x: clip;
+  }
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    overflow-x: hidden;
+  }
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-display);
+    letter-spacing: 0;
+  }
+}
+
+@utility btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  background: var(--primary);
+  color: var(--primary-foreground);
+  padding: 0.95rem 1.6rem;
+  border-radius: 999px;
+  font-weight: 600;
+  transition:
+    background 0.35s ease,
+    transform 0.35s ease,
+    box-shadow 0.35s ease;
+  box-shadow: 0 14px 30px -16px
+    color-mix(in oklab, var(--deep) 70%, transparent);
+  &:hover {
+    background: var(--deep);
+    transform: translateY(-2px);
+  }
+  &:focus-visible {
+    outline: 2px solid var(--gold);
+    outline-offset: 3px;
+  }
+}
+
+@utility btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  color: var(--primary);
+  padding: 0.95rem 1.4rem;
+  border-radius: 999px;
+  font-weight: 600;
+  border: 1px solid var(--border);
+  transition:
+    border-color 0.35s ease,
+    color 0.35s ease;
+  &:hover {
+    border-color: var(--gold);
+    color: var(--deep);
+  }
+  &:focus-visible {
+    outline: 2px solid var(--gold);
+    outline-offset: 3px;
+  }
+}
+
+@utility link-underline {
+  position: relative;
+  &::after {
+    content: "";
+    position: absolute;
+    inset-inline: 0;
+    bottom: -4px;
+    height: 1px;
+    background: var(--gold);
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.4s ease;
+  }
+  &:hover::after {
+    transform: scaleX(1);
+  }
+}
+
+@utility letter-deco {
+  position: absolute;
+  font-family: var(--font-display);
+  font-weight: 800;
+  color: var(--primary);
+  line-height: 1;
+  user-select: none;
+  pointer-events: none;
+}
+
+@utility organic-frame {
+  border-radius: 62% 38% 46% 54% / 48% 40% 60% 52%;
+}
+
+@keyframes scroll-dot {
+  0% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  80% {
+    transform: translateY(14px);
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+@utility animate-scroll-dot {
+  animation: scroll-dot 1.8s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .animate-scroll-dot {
+    animation: none;
+  }
+}
+
+@utility portrait-fade {
+  mask-image: linear-gradient(to top, transparent 0%, #000 9%);
+}
+
+/* Learning stage panels */
+@utility stage-panel {
+  position: relative;
+  overflow: hidden;
+  border-radius: 0.75rem;
+  padding: 2rem 1.5rem;
+  border: 1px solid var(--border);
+  transition:
+    transform 0.5s ease,
+    box-shadow 0.5s ease,
+    border-color 0.5s ease;
+  @media (min-width: 640px) {
+    padding: 3rem 2.75rem;
+  }
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 30px 60px -40px
+      color-mix(in oklab, var(--deep) 60%, transparent);
+    border-color: var(--gold);
+  }
+}
+@utility stage-light {
+  background: var(--card);
+  color: var(--primary);
+  --stage-muted: var(--muted-foreground);
+  --stage-line: var(--border);
+}
+@utility stage-dark {
+  background: var(--deep);
+  color: var(--card);
+  border-color: var(--deep);
+  --stage-muted: color-mix(in oklab, var(--card) 72%, transparent);
+  --stage-line: color-mix(in oklab, var(--card) 14%, transparent);
+}
+@utility stage-letter {
+  position: absolute;
+  inset-inline-start: -4%;
+  bottom: -18%;
+  pointer-events: none;
+  user-select: none;
+  font-family: var(--font-display);
+  font-weight: 800;
+  line-height: 1;
+  font-size: 16rem;
+  color: currentColor;
+  opacity: 0.05;
+  @media (min-width: 1024px) {
+    font-size: 22rem;
+  }
+}
+@utility stage-label {
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: var(--gold);
+  border-bottom: 1px solid var(--gold);
+  padding-bottom: 0.35rem;
+}
+@utility stage-num {
+  font-family: var(--font-display);
+  font-weight: 800;
+  line-height: 1;
+  font-size: 4.5rem;
+  color: transparent;
+  -webkit-text-stroke: 1px var(--gold);
+  @media (min-width: 1024px) {
+    font-size: 6rem;
+  }
+}
+@utility stage-desc {
+  color: var(--stage-muted);
+}
+@utility stage-area {
+  padding: 0.85rem 0;
+  border-top: 1px solid var(--stage-line);
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  &::before {
+    content: "";
+    width: 6px;
+    height: 6px;
+    rotate: 45deg;
+    background: var(--gold);
+    flex: none;
+  }
+}
+@utility stage-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  min-height: 48px;
+  padding: 0.8rem 1.4rem;
+  border-radius: 999px;
+  font-weight: 600;
+  border: 1px solid var(--gold);
+  color: inherit;
+  transition:
+    background 0.35s ease,
+    color 0.35s ease;
+  &:hover {
+    background: var(--gold);
+    color: var(--deep);
+  }
+  &:focus-visible {
+    outline: 2px solid var(--gold);
+    outline-offset: 3px;
+  }
+}
+
+/* Room for Arabic diacritics inside clipped reveal wrappers */
+@utility word-mask {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: bottom;
+  padding-block: 0.3em 0.15em;
+  margin-block: -0.3em -0.15em;
+}
+
+/* Learning library */
+@utility filter-chip {
+  white-space: nowrap;
+  min-height: 44px;
+  padding: 0.55rem 1.1rem;
+  border-radius: 999px;
+  font-size: 0.92rem;
+  font-weight: 500;
+  color: var(--muted-foreground);
+  border: 1px solid transparent;
+  transition:
+    background 0.3s ease,
+    color 0.3s ease,
+    border-color 0.3s ease;
+  &:hover {
+    color: var(--primary);
+    border-color: var(--border);
+  }
+  &:focus-visible {
+    outline: 2px solid var(--gold);
+    outline-offset: 2px;
+  }
+}
+@utility filter-chip-active {
+  background: var(--deep);
+  color: var(--card);
+  border-color: var(--deep);
+  &:hover {
+    color: var(--card);
+    border-color: var(--deep);
+  }
+}
+@utility lib-search {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  min-height: 46px;
+  width: 100%;
+  padding: 0 1.1rem;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: var(--background);
+  transition: border-color 0.3s ease;
+  &:focus-within {
+    border-color: var(--gold);
+  }
+  @media (min-width: 1024px) {
+    width: 300px;
+    flex: none;
+  }
+}
+@utility lesson-card {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border-radius: 0.75rem;
+  background: var(--background);
+  border: 1px solid var(--border);
+  transition:
+    transform 0.45s ease,
+    box-shadow 0.45s ease,
+    border-color 0.45s ease;
+  &:hover {
+    transform: translateY(-4px);
+    border-color: color-mix(in oklab, var(--gold) 60%, transparent);
+    box-shadow: 0 28px 50px -36px
+      color-mix(in oklab, var(--deep) 70%, transparent);
+  }
+  &:focus-visible {
+    outline: 2px solid var(--gold);
+    outline-offset: 3px;
+  }
+}
+@utility lesson-arrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: var(--primary);
+  transition:
+    gap 0.35s ease,
+    color 0.35s ease;
+  .group:hover & {
+    gap: 0.75rem;
+    color: var(--gold);
+  }
+}
+@utility lesson-cover {
+  position: relative;
+  height: 11.5rem;
+  overflow: hidden;
+  font-family: var(--font-display);
+  font-weight: 800;
+  line-height: 1;
+  & > span {
+    transition: transform 0.7s cubic-bezier(0.2, 0.7, 0.2, 1);
+  }
+  .group:hover & .cover-main {
+    transform: translate(-10px, -6px) rotate(-3deg);
+  }
+  .group:hover & .cover-second {
+    transform: translate(8px, 4px);
+  }
+  .group:hover & .cover-line {
+    transform: scaleX(1.35);
+  }
+}
+@utility cover-light {
+  background: var(--card);
+  color: var(--primary);
+}
+@utility cover-dark {
+  background: var(--primary);
+  color: var(--card);
+}
+@utility cover-sand {
+  background: var(--sand);
+  color: var(--deep);
+}
+@utility cover-main {
+  position: absolute;
+  inset-inline-start: 8%;
+  bottom: -12%;
+  font-size: 9.5rem;
+  opacity: 0.9;
+}
+@utility cover-second {
+  position: absolute;
+  inset-inline-end: 12%;
+  top: 14%;
+  font-size: 4rem;
+  color: transparent;
+  -webkit-text-stroke: 1px var(--gold);
+}
+@utility cover-line {
+  position: absolute;
+  inset-inline-end: 12%;
+  bottom: 26%;
+  width: 3.5rem;
+  height: 1px;
+  background: var(--gold);
+  transform-origin: right;
+}
+@utility cover-dot {
+  position: absolute;
+  inset-inline-end: calc(12% + 3.9rem);
+  bottom: calc(26% - 3px);
+  width: 7px;
+  height: 7px;
+  rotate: 45deg;
+  background: var(--gold);
+}
+@utility cover-tag {
+  position: absolute;
+  inset-inline-end: 12%;
+  bottom: 12%;
+  font-family: var(--font-sans);
+  font-weight: 500;
+  font-size: 0.75rem;
+  opacity: 0.75;
+}
+
+/* An unframed Arabic manuscript composition, with fixed tracks for letter changes. */
+.type-exhibition {
+  display: grid;
+  grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+  border-block: 1px solid var(--border);
+}
+.type-canvas {
+  position: relative;
+  min-width: 0;
+  height: 510px;
+  border-inline-end: 1px solid var(--border);
+  background-image:
+    linear-gradient(to right, var(--border) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--border) 1px, transparent 1px);
+  background-size: 25% 25%;
+}
+.type-featured-letter {
+  position: absolute;
+  inset: 30px 0 65px;
+  display: grid;
+  place-items: center;
+  font-family: var(--font-display);
+  font-size: 280px;
+  font-weight: 800;
+  line-height: 1.4;
+  color: var(--primary);
+}
+.type-manuscript-label {
+  position: absolute;
+  inset-inline-start: 25px;
+  top: 22px;
+  color: var(--muted-foreground);
+  font-size: 12px;
+}
+.type-word {
+  position: absolute;
+  inset-inline-start: 26px;
+  bottom: 95px;
+  font-family: var(--font-display);
+  font-size: 38px;
+  font-weight: 500;
+  line-height: 2;
+  color: var(--gold);
+}
+.type-companion {
+  position: absolute;
+  inset-inline-end: 24px;
+  top: 85px;
+  font-size: 24px;
+  line-height: 2;
+  color: var(--primary);
+}
+.type-mark {
+  position: absolute;
+  inset-inline-start: 32%;
+  top: 48px;
+  font-size: 90px;
+  line-height: 1.6;
+  color: var(--gold);
+}
+.type-caption {
+  position: absolute;
+  bottom: 24px;
+  inset-inline: 24px;
+  text-align: center;
+  font-family: var(--font-display);
+  font-size: 20px;
+  line-height: 2;
+  color: var(--primary);
+}
+.type-corner {
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  border: 1px solid var(--gold);
+  background: var(--background);
+  z-index: 1;
+}
+.type-corner-start {
+  top: -7px;
+  inset-inline-start: -7px;
+}
+.type-corner-end {
+  bottom: -7px;
+  inset-inline-end: -7px;
+}
+.type-editorial {
+  padding: 48px 40px;
+  min-width: 0;
+}
+.type-selector {
+  width: 54px;
+  height: 54px;
+  flex: none;
+  padding: 0;
+  border-radius: 50%;
+  border: 1px solid var(--border);
+  font-family: var(--font-display);
+  font-size: 25px;
+  color: var(--primary);
+}
+.type-selector-active {
+  background: var(--primary);
+  border-color: var(--primary);
+  color: var(--primary-foreground);
+}
+.type-selector-active:hover {
+  background: var(--deep);
+  color: var(--primary-foreground);
+}
+.type-note {
+  margin-top: 38px;
+  min-height: 240px;
+}
+.contact-cta {
+  background: var(--gold);
+  color: var(--deep);
+  border-radius: 999px;
+  height: auto;
+  min-height: 56px;
+  padding: 16px 24px;
+  font-size: 16px;
+  font-weight: 600;
+  box-shadow: none;
+  transition:
+    transform 0.25s ease,
+    background 0.25s ease;
+}
+.contact-cta:hover {
+  background: var(--primary-foreground);
+  transform: translateY(-2px);
+}
+.contact-cta:disabled {
+  opacity: 0.7;
+}
+.contact-detail {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding-block: 20px;
+  line-height: 1.8;
+}
+.contact-detail svg {
+  width: 18px;
+  height: 18px;
+  flex: none;
+  color: var(--gold);
+}
+.contact-detail a:hover,
+a.contact-detail:hover {
+  color: var(--gold);
+}
+
+@media (max-width: 1023px) {
+  .type-exhibition {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  }
+  .type-editorial {
+    padding: 35px 24px;
+  }
+  .type-featured-letter {
+    font-size: 180px;
+  }
+  .type-companion {
+    top: 68px;
+    font-size: 20px;
+  }
+  .type-selector {
+    width: 48px;
+    height: 48px;
+  }
+}
+@media (max-width: 639px) {
+  .type-exhibition {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .type-canvas {
+    height: 410px;
+    border-inline-end: 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .type-featured-letter {
+    font-size: 180px;
+    inset-block: 20px 55px;
+  }
+  .type-word {
+    font-size: 30px;
+    bottom: 75px;
+  }
+  .type-mark {
+    font-size: 70px;
+    top: 30px;
+  }
+  .type-caption {
+    font-size: 18px;
+    bottom: 18px;
+  }
+  .type-editorial {
+    padding: 30px 0;
+  }
+  .type-note {
+    min-height: 215px;
+    margin-top: 24px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .contact-cta {
+    transition: none;
+  }
+  .contact-cta:hover {
+    transform: none;
+  }
+}
