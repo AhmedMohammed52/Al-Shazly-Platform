@@ -87,7 +87,7 @@ export default function TeacherIntroSection() {
           >
             <img
               src={TeacherPhoto}
-              alt="صورة المعلّم"
+              alt="الأستاذ محمد الشاذلي، معلم أول لغة عربية"
               loading="lazy"
               className="size-full object-cover object-[50%_15%]"
             />
@@ -97,7 +97,7 @@ export default function TeacherIntroSection() {
           </span>
         </div>
 
-        {/* العمود الأيسر: النصوص ومبادئ التدريس */}
+        {/* العمود الأيسر: نبذة عن المدرس ومبادئ التدريس */}
         <div>
           <p
             data-intro="true"
@@ -110,20 +110,24 @@ export default function TeacherIntroSection() {
             data-intro="true"
             className="mt-5 text-3xl font-extrabold leading-[1.4] text-primary sm:text-4xl lg:text-5xl"
           >
-            أستاذ يعلّم العربية بطريقة{" "}
-            <span className="text-gold">أقرب إلى الطالب.</span>
+            الأستاذ محمد الشاذلي،
+            <span className="text-gold">
+              {" "}
+              خبرة تتجاوز 15 عامًا في تعليم العربية.
+            </span>
           </h2>
 
           <p
             data-intro="true"
             className="mt-6 max-w-xl text-lg leading-loose text-muted-foreground"
           >
-            أساعد طلاب المرحلة الابتدائية والإعدادية على فهم اللغة العربية
-            بطريقة واضحة وبسيطة، من خلال الجمع بين الشرح، والتطبيق، والتدريب
-            المستمر.
+            معلم أول لغة عربية، يمتلك خبرة تمتد لأكثر من 15 عامًا في تدريس اللغة
+            العربية لطلاب المرحلتين الابتدائية والإعدادية. عمل بمدرسة تحيا مصر 1
+            المتميزة للغات، ويعمل حاليًا بمدرسة المراشدة، إلى جانب تقديم الدروس
+            الخصوصية، مع الحرص على تبسيط المعلومة وبناء فهم حقيقي لدى كل طالب.
           </p>
 
-          {/* مبادئ التدريس (3 عناصر) */}
+          {/* مبادئ التدريس */}
           <ol
             id="principles"
             className="mt-12 grid scroll-mt-24 border-t border-border sm:grid-cols-3"
@@ -173,7 +177,7 @@ export default function TeacherIntroSection() {
         </div>
       </div>
 
-      {/* الشريط السفلي المميز مع أيقونات Lucide */}
+      {/* الشريط السفلي */}
       <ul className="relative mx-auto mt-16 grid max-w-7xl grid-cols-2 gap-y-5 border-y border-border px-5 py-6 md:grid-cols-4 md:px-10">
         <li className="flex items-center justify-center gap-3 text-sm font-medium text-foreground md:text-base">
           <School className="size-4.5 text-gold" aria-hidden="true" />
