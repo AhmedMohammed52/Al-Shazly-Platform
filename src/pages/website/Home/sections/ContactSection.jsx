@@ -1,13 +1,13 @@
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { MessageCircle, ArrowUpLeft } from "lucide-react";
+import { MessageCircle, ArrowUpLeft, Phone } from "lucide-react";
 
 gsap.registerPlugin(ScrollTrigger);
 
 const WHATSAPP_NUMBER = "201090164818";
 
-export default function ContactBookingSection() {
+export default function ContactSection() {
   const sectionRef = useRef(null);
 
   useEffect(() => {
@@ -114,11 +114,23 @@ export default function ContactBookingSection() {
             <p className="text-sm font-semibold text-gold">
               ابدأ رحلتك مع اللغة العربية
             </p>
+
             <h3 className="mt-4 text-2xl font-bold leading-loose">لنتواصل.</h3>
+
             <p className="mt-4 max-w-sm text-base leading-loose text-primary-foreground/65">
               للحجز والاستفسار عن دروس اللغة العربية للمرحلتين الابتدائية
-              والإعدادية، تواصل معنا مباشرة عبر واتساب.
+              والإعدادية، يمكنك التواصل معنا هاتفيًا.
             </p>
+
+            <a
+              href={`tel:+${WHATSAPP_NUMBER}`}
+              dir="ltr"
+              className="mt-6 inline-flex items-center gap-3 text-lg font-semibold text-primary-foreground transition-colors hover:text-gold"
+              aria-label="اتصل بنا هاتفيًا"
+            >
+              <Phone className="size-5 text-gold" aria-hidden="true" />
+              <span>+20 109 016 4818</span>
+            </a>
           </div>
         </div>
 
