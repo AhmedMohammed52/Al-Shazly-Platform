@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Search, ArrowLeft, X, BookOpen, Clock } from "lucide-react";
-import { GRADES, LESSONS_DATA } from "../../../../data/LibraryData";
+import { GRADES, LESSONS_DATA } from "../../../../data/website/LibraryData";
 
 gsap.registerPlugin(ScrollTrigger);
 

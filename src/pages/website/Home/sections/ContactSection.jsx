@@ -5,7 +5,7 @@ import { MessageCircle, ArrowUpLeft, Phone } from "lucide-react";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const WHATSAPP_NUMBER = "201090164818";
+const WHATSAPP_NUMBER = "201002848993";
 
 export default function ContactSection() {
   const sectionRef = useRef(null);
@@ -129,7 +129,7 @@ export default function ContactSection() {
               aria-label="اتصل بنا هاتفيًا"
             >
               <Phone className="size-5 text-gold" aria-hidden="true" />
-              <span>+20 109 016 4818</span>
+              <span>+20 100 284 8993</span>
             </a>
           </div>
         </div>

@@ -1,7 +1,7 @@
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { School, BookOpen, Lightbulb, Repeat } from "lucide-react";
+import { School, Lightbulb, Repeat } from "lucide-react";
 import TeacherPhoto from "../../../../assets/teacher-photo.jfif";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -122,9 +122,11 @@ export default function TeacherIntroSection() {
             className="mt-6 max-w-xl text-lg leading-loose text-muted-foreground"
           >
             معلم أول لغة عربية، يمتلك خبرة تمتد لأكثر من 15 عامًا في تدريس اللغة
-            العربية لطلاب المرحلتين الابتدائية والإعدادية. عمل بمدرسة تحيا مصر 1
-            المتميزة للغات، ويعمل حاليًا بمدرسة المراشدة، إلى جانب تقديم الدروس
-            الخصوصية، مع الحرص على تبسيط المعلومة وبناء فهم حقيقي لدى كل طالب.
+            العربية لطلاب المرحلتين الابتدائية والإعدادية، تنقّل خلالها بين
+            مدارس متعددة في الريف والمدن، من بينها مدارس جزيرة ابنود والطويرات
+            والبياضية، ومدرسة تحيا مصر 1 الرسمية للغات. كما شارك في تأسيس مدرسة
+            المخادمة الرسمية التجريبية، ويعمل بها حاليًا، مؤمنًا بأن
+            تبسيط المعلومة وبناء الفهم الحقيقي هما أساس نجاح الطالب.
           </p>
 
           {/* مبادئ التدريس */}
@@ -180,17 +182,23 @@ export default function TeacherIntroSection() {
       {/* الشريط السفلي */}
       <ul className="relative mx-auto mt-16 grid max-w-7xl grid-cols-2 gap-y-5 border-y border-border px-5 py-6 md:grid-cols-4 md:px-10">
         <li className="flex items-center justify-center gap-3 text-sm font-medium text-foreground md:text-base">
-          <School className="size-4.5 text-gold" aria-hidden="true" />
-          المرحلة الابتدائية
+          <span className="text-2xl font-extrabold text-gold">+15</span>
+          عامًا من الخبرة
         </li>
+
         <li className="flex items-center justify-center gap-3 text-sm font-medium text-foreground md:text-base">
-          <BookOpen className="size-4.5 text-gold" aria-hidden="true" />
-          المرحلة الإعدادية
+          <School className="size-4.5 text-gold" aria-hidden="true" />
+          <span>
+            <strong className="text-xl font-extrabold text-gold">10+</strong>{" "}
+            مدارس
+          </span>
         </li>
+
         <li className="flex items-center justify-center gap-3 text-sm font-medium text-foreground md:text-base">
           <Lightbulb className="size-4.5 text-gold" aria-hidden="true" />
           شرح مبسط
         </li>
+
         <li className="flex items-center justify-center gap-3 text-sm font-medium text-foreground md:text-base">
           <Repeat className="size-4.5 text-gold" aria-hidden="true" />
           تدريب مستمر
